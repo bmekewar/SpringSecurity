@@ -23,6 +23,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.passwordAttribute("userPassword");	
 	}
 
+	/*
+	 * @Bean public DefaultSpringSecurityContextSource contextSource() {
+	 * 
+	 * return new
+	 * DefaultSpringSecurityContextSource(Arrays.asList("ldap://localhost:8389"),
+	 * "dc=springframework,dc=org"); }
+	 */	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
@@ -30,17 +37,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.anyRequest()
 			.fullyAuthenticated()
 			.and()
-			.formLogin()
-			.failureUrl("/login?error").permitAll()
-			.and()
-	        .logout()
-	        .deleteCookies("remove")
-	        .invalidateHttpSession(true)
-	        .logoutUrl("/logout")
-	        .logoutSuccessUrl("/login?logout")
-	        .and()
+			.formLogin();
+//			.failureUrl("/login?error").permitAll()
+//			.and()
+//	        .logout()
+//	        .deleteCookies("remove")
+//	        .invalidateHttpSession(true)
+//	        .logoutUrl("/logout")
+//	        .logoutSuccessUrl("/login?logout")
+//	        .and()
 		    // Cross-site request forgery is turned off for RESTful API calls with the assumption that
 		    // authentication will be sufficient protection
-		    .csrf().ignoringAntMatchers("/api/**", "/space/{\\d+}/**", "/admin/**");	
+//		    .csrf().ignoringAntMatchers("/api/**", "/space/{\\d+}/**", "/admin/**");	
 	}
 }
