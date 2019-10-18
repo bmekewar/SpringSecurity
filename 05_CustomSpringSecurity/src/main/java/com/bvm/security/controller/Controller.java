@@ -22,11 +22,6 @@ public class Controller {
 	@Autowired
 	private UserRepository userRepository;
 
-	@GetMapping("/")
-	public String get() {
-		return "Welcome";
-	}
-
 	@GetMapping("/user")
 	public String user() {
 		return "Welcome User";
