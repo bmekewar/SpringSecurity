@@ -1,0 +1,11 @@
+management:
+  security:
+    enabled: true
+
+server:
+  port: 8001
+    
+spring: 
+  resources:
+    chain: 
+      enabled: true
